@@ -1,18 +1,17 @@
-function App() {
-  const handleNameChange = () => {
-    const names = ['Bob', ' Kevin' , 'Dave', 'James', 'Anna', 'Mary', 'Nicolle'];
-    const int = Math.floor(Math.random() * 7);
-    return names[int];
-  }
+import Content from "./components/content.component";
+import Footer from "./components/footer.component";
+import Header from "./components/header.component";
+
+function App() {  
+
   return(
     <div className="App">
-      
-      <p>
-        Hello {handleNameChange()}!
-      </p>
-      
+      <Header />     
+      <Content />
+      <Footer />
     </div>
   );
+
 }
 
 
