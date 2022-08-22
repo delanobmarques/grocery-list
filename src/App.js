@@ -3,11 +3,13 @@ import AddItem from "./components/add-item";
 import Content from "./components/content.component";
 import Footer from "./components/footer.component";
 import Header from "./components/header.component";
+import SearchItem from "./components/search-item";
 
 function App() {  
 
   const [items, setItems] = useState(JSON.parse(localStorage.getItem('shoppinglist')));
   const [ newItem, setNewItem ] = useState('');
+  const [search, setSearch] = useState('');
 
   const setAndSaveItems = (newItems) => {
     setItems(newItems);
@@ -40,14 +42,18 @@ function App() {
 
   return(
     <div className="App">
-      <Header title="Shopping List"/>     
+      <Header title="Shopping List"/>           
       <AddItem
         newItem={newItem}
         setNewItem={setNewItem}
         handleSubmit={handleSubmit}
       />
+      <SearchItem 
+        search={search} 
+        setSearch={setSearch} 
+      />
       <Content 
-        items={ items }
+        items={ items.filter(item => ((item.item).toLowerCase().includes(search.toLowerCase()))) }
         handleCheck = { handleCheck }
         handleDelete = { handleDelete } 
       />
